@@ -1,0 +1,57 @@
+html {
+    text-align: center;
+    font-size: 22px
+}
+body {
+    background-color:lightblue;
+    color:indianred;
+}
+.footer {
+    position: fixed;     
+    text-align: center;    
+    font-size: 15px;
+    bottom: 0px; 
+    width: 100%;
+}
+a {
+    color: lightseagreen;
+}
+
+a:visited {
+    color: lightsalmon;
+}
+a:hover, a:active {
+    color:lightskyblue;
+}
+
+  table, tr,th, td, caption {
+    text-align: center;
+    vertical-align: middle;
+    align-content: center;
+    border: 1px solid navajowhite;
+    font-family: 'Courier New', 'Courier', monospace;
+    border-collapse: collapse;
+    padding: 0.5rem;
+  }
+  .icon-library {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.icon {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.icon img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
