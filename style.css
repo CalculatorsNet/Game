@@ -77,7 +77,7 @@ table, tr, th, td, caption {
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.7);
-    color: white;
+    color: limegreen;
     font-size: 14px;
     padding: 5px 10px;
     border-radius: 5px;
