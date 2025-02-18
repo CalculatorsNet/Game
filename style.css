@@ -95,12 +95,16 @@ table, tr, th, td, caption {
 }
 
 #searchInput {
-    width: 300px;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid limegreen;
-    background-color: black;
-    color: limegreen;
-    border-radius: 5px;
-    margin-bottom: 20px;
+  position: absolute;
+  top: 20px
+  right: 20px
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  outline: none;
 }
