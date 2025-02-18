@@ -109,3 +109,7 @@ table, tr, th, td, caption {
   margin-bottom: 20px;
   outline: none;
 }
+
+#searchInput::placeholder {
+  color: limegreen;
+}
