@@ -104,6 +104,9 @@ table, tr, th, td, caption {
   right: 20px;
   width: 300px;
   padding: 10px;
+  font-family: "Ubuntu Mono", serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 16px;
   border: 2px solid limegreen;
   background-color: black;
@@ -114,5 +117,8 @@ table, tr, th, td, caption {
 }
 
 #searchInput::placeholder {
+  font-family: "Ubuntu Mono", serif;
+  font-weight: 400;
+  font-style: normal;
   color: limegreen;
 }
