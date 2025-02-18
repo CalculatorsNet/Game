@@ -93,3 +93,14 @@ table, tr, th, td, caption {
 .icon:hover img {
     transform: scale(1.1);
 }
+
+#searchInput {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid limegreen;
+    background-color: black;
+    color: limegreen;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
