@@ -160,4 +160,6 @@ table, tr, th, td, caption {
     font-size: 30px;
     cursor: pointer;
     color: limegreen;
+    top: 20px;
+    left: 20px;
 }
