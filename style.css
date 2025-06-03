@@ -53,6 +53,8 @@ table, tr, th, td, caption {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    margin-top: 50px; /* Added space above the regular game grid */
+    padding-bottom: 80px; /* Ensures space above the fixed footer */
 }
 
 .icon {
@@ -97,6 +99,41 @@ table, tr, th, td, caption {
 .icon:hover img {
     transform: scale(1.1);
 }
+
+/* START: New styles for Featured Game Section */
+.featured-game-section {
+    text-align: center; /* Center the box itself */
+    margin: 50px auto 30px auto; /* Add vertical space and center horizontally. Adjusted bottom margin */
+    padding: 20px;
+    border: 3px solid limegreen; /* Make it stand out */
+    border-radius: 15px;
+    background-color: #0a0a0a; /* Slightly darker background */
+    width: fit-content; /* Shrink to content width */
+    max-width: 90%; /* Prevent it from getting too wide on small screens */
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.6); /* Stronger glow effect */
+}
+
+.featured-game-section h2 {
+    color: limegreen;
+    margin-bottom: 25px;
+    font-size: 28px; /* Slightly larger title */
+    text-shadow: 0 0 10px limegreen; /* Add text shadow for glow */
+}
+
+.featured-game-box .icon img {
+    width: 180px; /* Make the featured icon significantly larger */
+    height: 180px;
+    border: 3px solid lightseagreen; /* Add a distinct border */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Inner glow for the image */
+}
+
+.featured-game-box .overlay-text {
+    font-size: 18px; /* Larger text for featured game */
+    padding: 8px 15px;
+    background: rgba(0, 0, 0, 0.85); /* Slightly less transparent background */
+    color: lightskyblue; /* Change text color for more distinction */
+}
+/* END: New styles for Featured Game Section */
 
 #searchInput {
   position: absolute;
