@@ -31,30 +31,58 @@
         <h1>Bored</h1>
        
         <p>Have nothing to do? Here are some games.</p>
-        <div class="featured-game-section">
-            <h2>Featured Game</h2>
-            <div class="featured-game-box">
-                <a href="https://pnappl.github.io/Xenon-Games-New-/gladihoppers/index.html" class="icon" data-category="plat">
-                    <div class="overlay-container">
-                        <img src="img/gladihoppers.png" alt="Gladihoppers">
-                        <span class="overlay-text">Gladihoppers</span>
-                    </div>
-                </a>
+
+        <div class="special-sections-container">
+            <!-- Game of the Week (populated by JS) -->
+            <div class="featured-game-section" id="game-of-the-day-section">
+                <h2>Game of the Day</h2>
+                <div class="featured-game-box">
+                    <!-- JS populates this -->
+                </div>
+            </div>
+            <div class="featured-game-section" id="game-of-the-week-section">
+                <h2>Game of the Week</h2>
+                <div class="featured-game-box">
+                    <!-- JS populates this -->
+                </div>
+            </div>
+        
+            <!-- Newest Game (populated by JS) -->
+            <div class="featured-game-section" id="newest-game-section">
+                <h2>Newest Game</h2>
+                <div class="featured-game-box">
+                    <!-- JS populates this -->
+                </div>
+            </div>
+        
+            <!-- Request Form -->
+            <div class="featured-game-section">
+                <h2>Request a Game</h2>
+                <div class="featured-game-box">
+                    <a href="https://forms.gle/FUQuSnn2hFHfSemKA/" class="icon">
+                        <div class="overlay-container">
+                            <img src="img/forms.png" alt="Request Form">
+                            <span class="overlay-text">Request Form</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        
+            <!-- ROM Games -->
+            <div class="featured-game-section">
+                <h2>ROM Games</h2>
+                <div class="featured-game-box">
+                     <a href="https://docs.google.com/document/d/1i4Ps-X8KobdmyPmniRLrI7RtHojk2gqtI6oJuz_HKls/edit?usp=sharing" class="icon">
+                        <div class="overlay-container">
+                            <img src="img/rom.png" alt="ROM Games">
+                            <span class="overlay-text">ROM Games</span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
+
         <div class="icon-library">
-            <a href="https://forms.gle/FUQuSnn2hFHfSemKA/" class = "icon" data-category="other">
-                <div class="overlay-container">
-                    <img src = "img/forms.png" alt="Request Form">
-                    <span class="overlay-text">Request Form</span>
-                </div>
-            </a>
-            <a href="https://docs.google.com/document/d/1i4Ps-X8KobdmyPmniRLrI7RtHojk2gqtI6oJuz_HKls/edit?usp=sharing" class = "icon" data-category="other">
-                <div class="overlay-container">
-                    <img src = "img/rom.png" alt="ROM Games">
-                    <span class="overlay-text">ROM Games</span>
-                </div>
-            </a>
             <a href="https://aaravr10.github.io/getawayshootout/" class = "icon" data-category="multi plat pixel">
                 <div class="overlay-container">
                     <img src = "img/getawayshootout.png" alt="Getaway Shootout">
@@ -1492,6 +1520,52 @@
                         icon.style.display = 'none';
                     }
                 });
+            });
+
+            // New script to populate dynamic sections
+            document.addEventListener('DOMContentLoaded', function() {
+                const allGames = document.querySelectorAll('.icon-library .icon');
+                
+                if (allGames.length > 0) {
+                    // --- Helper function to get week number ---
+                    function getWeekNumber(d) {
+                        d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+                        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+                        const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+                        const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+                        return weekNo;
+                    }
+
+                    const today = new Date();
+
+                    // --- Game of the Day ---
+                    const daySeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+                    const dayIndex = daySeed % allGames.length;
+                    const gameOfTheDay = allGames[dayIndex].cloneNode(true);
+                    const gotdContainer = document.querySelector('#game-of-the-day-section .featured-game-box');
+                    if (gotdContainer) {
+                        gotdContainer.innerHTML = '';
+                        gotdContainer.appendChild(gameOfTheDay);
+                    }
+
+                    // --- Game of the Week ---
+                    const weekSeed = today.getFullYear() * 100 + getWeekNumber(today);
+                    const weekIndex = weekSeed % allGames.length;
+                    const gameOfTheWeek = allGames[weekIndex].cloneNode(true);
+                    const gotwContainer = document.querySelector('#game-of-the-week-section .featured-game-box');
+                    if (gotwContainer) {
+                        gotwContainer.innerHTML = '';
+                        gotwContainer.appendChild(gameOfTheWeek);
+                    }
+
+                    // --- Newest Game ---
+                    const newestGame = allGames[allGames.length - 1].cloneNode(true);
+                    const newestGameContainer = document.querySelector('#newest-game-section .featured-game-box');
+                    if (newestGameContainer) {
+                        newestGameContainer.innerHTML = '';
+                        newestGameContainer.appendChild(newestGame);
+                    }
+                }
             });
         </script>
     </body>
