@@ -53,8 +53,8 @@ table, tr, th, td, caption {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    margin-top: 50px; /* Added space above the regular game grid */
-    padding-bottom: 80px; /* Ensures space above the fixed footer */
+    margin-top: 50px;
+    padding-bottom: 80px;
 }
 
 .icon {
@@ -100,14 +100,13 @@ table, tr, th, td, caption {
     transform: scale(1.1);
 }
 
-/* START: Styles for Special Sections */
 .special-sections-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px; /* Spacing between the featured boxes */
-    align-items: flex-start; /* Align boxes to the top */
-    margin: 50px 20px 30px 20px; /* Top/bottom margin, and some side margin for smaller screens */
+    gap: 30px;
+    align-items: flex-start;
+    margin: 50px 20px 30px 20px;
 }
 
 .featured-game-section {
@@ -141,7 +140,6 @@ table, tr, th, td, caption {
     background: rgba(0, 0, 0, 0.85);
     color: lightskyblue;
 }
-/* END: Styles for Special Sections */
 
 #searchInput {
   position: absolute;
@@ -208,3 +206,4 @@ table, tr, th, td, caption {
     top: 20px;
     left: 20px;
 }
+
