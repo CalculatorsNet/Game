@@ -1,4 +1,4 @@
-A collection of popular games we found on the internet, on an easy-to-access and unblocked website.
+A collection of popular calculators we found on the internet, on an easy-to-access and unblocked website.
 
 
 
