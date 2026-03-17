@@ -1,36 +1,80 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Bob and Joe (and McGillicutty)">
+    <meta name="description" content="This page will contain all games that are unblocked">
+    <title>Online Graphing Calculator</title>
+    <link rel="icon" href="img/calculator.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" type="text/css"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+    
+    <style>
+        /* Styles for the help icon */
+        .help-icon {
+            color: red;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 10px;
+            display: inline-block;
+            border: 1px solid red;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            vertical-align: middle;
+        }
+        
+        .help-icon:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="ubuntu-mono-regular">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for games...">
+    </div>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#" class="category-tab" data-category="multi">Multiplayer</a>
+        <a href="#" class="category-tab" data-category="logic">Logic</a>
+        <a href="#" class="category-tab" data-category="plat">Platformer</a>
+        <a href="#" class="category-tab" data-category="papa">Papa Games</a>
+        <a href="#" class="category-tab" data-category="pixel">Pixel Games</a>
+        <a href="#" class="category-tab" data-category="mario">Mario</a>
+        <a href="#" class="category-tab" data-category="drive">Driving</a>
+        <a href="#" class="category-tab" data-category="3d">3D</a>
+        <a href="#" class="category-tab" data-category="point">Point-and-Click</a>
+        <a href="#" class="category-tab" data-category="other">Other</a>
+    </div>
 
-<html lang = "en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "author" content = "Bob and Joe (and McGillicutty)">
-        <meta name = "description" content = "This page will contain all games that are unblocked">
-        <title>Online Graphing Calculator</title>
-        <link rel = "icon" href = "img/calculator.png"  type = "image/x-icon">
-        <link rel = "stylesheet" href = "style.css"  type = "text/css"> 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
-    </head>
-    <body class="ubuntu-mono-regular">
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search for games...">
-        </div>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            <a href="#" class="category-tab" data-category="multi">Multiplayer</a>
-            <a href="#" class="category-tab" data-category="logic">Logic</a>
-            <a href="#" class="category-tab" data-category="plat">Platformer</a>
-            <a href="#" class="category-tab" data-category="papa">Papa Games</a>
-            <a href="#" class="category-tab" data-category="pixel">Pixel Games</a>
-            <a href="#" class="category-tab" data-category="mario">Mario</a>
-            <a href="#" class="category-tab" data-category="drive">Driving</a>
-            <a href="#" class="category-tab" data-category="3d">3D</a>
-            <a href="#" class="category-tab" data-category="point">Point-and-Click</a>
-            <a href="#" class="category-tab" data-category="other">Other</a>
-        </div>
-        <span onclick="openNav()" id="openMenuBtn">Open Menu</span>
-        <h1>Bored</h1>
-       
-        <p>Have nothing to do? Here are some (316 with 8Ball) games.</p>
+    <span onclick="openNav()" id="openMenuBtn">Open Menu</span>
+    
+    <h1>Bored 
+        <span class="help-icon" onclick="showGameAlert()" title="Click for help">!</span>
+    </h1>
+    
+    <p>Have nothing to do? Here are some (316 with 8Ball) games.</p>
+
+    <script>
+        function showGameAlert() {
+            alert("If certain games do not work, switch your url: Calculatorsnet.github.io/Calculator (which says about:blank in your tab) to Calculatorsnet.github.io/Game or vice versa.");
+        }
+
+        // Logic for opening/closing nav (assuming you have these functions elsewhere)
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+</body>
+</html>
 
         <div class="special-sections-container">
             <div class="featured-game-section" id="game-of-the-day-section">
