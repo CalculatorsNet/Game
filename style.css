@@ -10,6 +10,9 @@ body {
     font-family: "Ubuntu Mono", serif;
     font-weight: 400;
     font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .ubuntu-mono-regular {
@@ -17,6 +20,29 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 980px;
+}
+
+.nav-button{
+    font-size: 35px;
+    cursor: pointer;
+    color: limegreen;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.search-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 
 .footer {
     position: fixed;
@@ -104,32 +130,32 @@ table, tr, th, td, caption {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
     align-items: flex-start;
-    margin: 50px 20px 30px 20px;
+    margin: 20px 20px 20px 20px;
 }
 
 .featured-game-section {
     text-align: center;
     padding: 20px;
+    margin-left:20px;
+    margin-right:20px;
     border: 3px solid limegreen;
     border-radius: 15px;
     background-color: #0a0a0a;
-    width: fit-content;
-    max-width: 90%;
+    width: 200px;
     box-shadow: 0 0 25px rgba(0, 255, 0, 0.6);
 }
 
 .featured-game-section h2 {
     color: limegreen;
     margin-bottom: 25px;
-    font-size: 28px;
+    font-size: 22px;
     text-shadow: 0 0 10px limegreen;
 }
 
 .featured-game-box .icon img {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     border: 3px solid lightseagreen;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
 }
@@ -142,21 +168,20 @@ table, tr, th, td, caption {
 }
 
 #searchInput {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 300px;
-  padding: 10px;
-  font-family: "Ubuntu Mono", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  border: 2px solid limegreen;
-  background-color: black;
-  color: limegreen;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  outline: none;
+    font-family: "Ubuntu Mono", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    border: 2px solid limegreen;
+    background-color: black;
+    color: limegreen;
+    border-radius: 20px;
+    outline: none;
+    width: 400px;
+    max-width: 90%;
+    height: 40px;
+    padding: 0 15px;
+    margin: 0 auto;
 }
 
 #searchInput::placeholder {
