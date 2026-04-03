@@ -2095,6 +2095,9 @@
                     const category = this.getAttribute('data-category');
                     document.querySelectorAll('.icon-library .icon').forEach(icon => {
                         const categories = icon.getAttribute('data-category').split(' ');
+                        if(category == "all") {
+                            icon.style.display = 'inline-block';
+                        } else
                         if (categories.includes(category)) {
                             icon.style.display = 'inline-block';
                         } else {
@@ -2168,7 +2171,6 @@
         </script>
     </body>
 </html>
-
 
 
 
