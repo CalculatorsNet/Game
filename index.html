@@ -60,13 +60,17 @@
         </div>
         <p>Have nothing to do? Here are some (316 with 8Ball) games.</p>
     </div>
-
+    <div class = "ad">
+        <h1>Advertisement</h1>
+        <button onclick="hideAd()">X</button>
+        <img src="" alt="Ad">
+        <p></p>
+    </div>
     <script>
         function showGameAlert() {
             alert("If certain games do not work, switch your url: Calculatorsnet.github.io/Calculator -> Calculatorsnet.github.io/Game or vice versa. (Calculatorsnet.github.io/Calculator will appear as about:blank)");
         }
 
-        // Logic for opening/closing nav (assuming you have these functions elsewhere)
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
         }
@@ -74,6 +78,35 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
+
+         document.addEventListener('DOMContentLoaded', function() {
+                const adContainer = document.querySelector('.ad');
+                const adImage = adContainer.querySelector('img');
+                const adText = adContainer.querySelector('p');
+                const time  = new Date();
+                const hour = time.getHours();
+                const minute = time.getMinutes();
+                const seconds = time.getSeconds();
+                //8am-4pm is ad period
+                const minTime = 8;
+                const maxTime = 20;
+                //Random probability (25 for now of getting ad)
+                const randomNum = Math.floor(Math.random() * 4) + 1;
+                //Ad images
+                const images = [["Ads/tutors.png", "A place where you can grow and thrive"]];
+                const randomImage = Math.floor(Math.random() * images.length);
+                if(hour >= minTime && hour <= maxTime && !(hour === maxTime && minute > 0) && randomNum === 2) {
+                    adImage.src = images[randomImage][0];
+                    adText.textContent = images[randomImage][1];
+                    adContainer.style.display = 'block';
+                }   else {
+                    adContainer.style.display = 'none';
+                }
+            });
+
+            function hideAd() {
+                document.querySelector('.ad').style.display = 'none';
+            }
     </script>
 </body>
 </html>
@@ -2126,7 +2159,6 @@
             // New script to populate dynamic sections
             document.addEventListener('DOMContentLoaded', function() {
                 const allGames = document.querySelectorAll('.icon-library .icon');
-                
                 if (allGames.length > 0) {
                     // --- Helper function to get week number ---
                     function getWeekNumber(d) {
