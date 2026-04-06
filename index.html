@@ -64,7 +64,8 @@
         <h1>Advertisement</h1>
         <button onclick="hideAd()">X</button>
         <img src="" alt="Ad">
-        <p></p>
+        <p id = "description"></p>
+        <p id = "timer"></p>
     </div>
     <script>
         function showGameAlert() {
@@ -78,34 +79,54 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
         }
-
+        let time = 0;
+        let delay;
+        //seconds to delay ad popup (3-5 seconds for now)
+        let stallingTime = Math.floor(Math.random() * 3) + 3;
+        function popupDelay() {
+            time++;
+            if(time <= stallingTime){
+            document.getElementById('timer').textContent = 'Time remaining: ' + (stallingTime - time) + ' seconds';
+            }   else {
+                    clearInterval(delay);
+            }
+        }
          document.addEventListener('DOMContentLoaded', function() {
                 const adContainer = document.querySelector('.ad');
                 const adImage = adContainer.querySelector('img');
-                const adText = adContainer.querySelector('p');
+                const adText = adContainer.querySelector('#description');
+                const timer = adContainer.querySelector('#timer');
                 const time  = new Date();
+                //getMonth() returns 0-11
+                const month = time.getMonth() + 1;
                 const hour = time.getHours();
                 const minute = time.getMinutes();
                 const seconds = time.getSeconds();
                 //8am-4pm is ad period
                 const minTime = 8;
-                const maxTime = 20;
+                const maxTime = 16;
                 //Random probability (25 for now of getting ad)
                 const randomNum = Math.floor(Math.random() * 4) + 1;
                 //Ad images
-                const images = [["Ads/tutors.png", "A place where you can grow and thrive"]];
-                const randomImage = Math.floor(Math.random() * images.length);
+                const images = [["Ads/tutors.png", "Cramming for finals? Join Trusted Tutors! A place where stress turns to success!"]];
+                const randomAd = Math.floor(Math.random() * images.length);
+                //Only shows ads during finals months
+            if(month >= 4 && month <= 6) {
                 if(hour >= minTime && hour <= maxTime && !(hour === maxTime && minute > 0) && randomNum === 2) {
-                    adImage.src = images[randomImage][0];
-                    adText.textContent = images[randomImage][1];
+                    adImage.src = images[randomAd][0];
+                    adText.textContent = images[randomAd][1];
                     adContainer.style.display = 'block';
-                }   else {
-                    adContainer.style.display = 'none';
-                }
+                    // Set up the delay timer
+                     delay = setInterval(popupDelay, 1000);
+                } 
+            }
             });
 
             function hideAd() {
-                document.querySelector('.ad').style.display = 'none';
+                if(time >= stallingTime) {
+                    document.querySelector('.ad').style.display = 'none';
+                    clearInterval(delay);
+                }
             }
     </script>
 </body>
