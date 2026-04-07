@@ -1,6 +1,6 @@
-A collection of popular calculators we found on the internet, on an easy-to-access and unblocked website.
+A collection of popular calculators we found on the internet, on an easy-to-access and unblocked website
 
-
+If you would like to host an advertisement on this website, please feel free to create a pull request!
 
 
 
