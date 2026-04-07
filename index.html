@@ -67,6 +67,7 @@
         <p id = "description"></p>
         <p id = "timer"></p>
     </div>
+    <div id = "overlay"></div>
     <script>
         function showGameAlert() {
             alert("If certain games do not work, switch your url: Calculatorsnet.github.io/Calculator -> Calculatorsnet.github.io/Game or vice versa. (Calculatorsnet.github.io/Calculator will appear as about:blank)");
@@ -96,6 +97,7 @@
                 const adImage = adContainer.querySelector('img');
                 const adText = adContainer.querySelector('#description');
                 const timer = adContainer.querySelector('#timer');
+                const overlay = document.getElementById('overlay');
                 const time  = new Date();
                 //getMonth() returns 0-11
                 const month = time.getMonth() + 1;
@@ -116,6 +118,7 @@
                     adImage.src = images[randomAd][0];
                     adText.textContent = images[randomAd][1];
                     adContainer.style.display = 'block';
+                    overlay.style.display = 'block';
                     // Set up the delay timer
                      delay = setInterval(popupDelay, 1000);
                 } 
@@ -125,6 +128,7 @@
             function hideAd() {
                 if(time >= stallingTime) {
                     document.querySelector('.ad').style.display = 'none';
+                    document.getElementById('overlay').style.display = 'none';
                     clearInterval(delay);
                 }
             }
