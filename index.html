@@ -65,6 +65,7 @@
         <button onclick="hideAd()">X</button>
         <img src="" alt="Ad">
         <p id = "description"></p>
+        <p id = "link"></p>
         <p id = "timer"></p>
     </div>
     <div id = "overlay"></div>
@@ -96,6 +97,7 @@
                 const adContainer = document.querySelector('.ad');
                 const adImage = adContainer.querySelector('img');
                 const adText = adContainer.querySelector('#description');
+                const adLink = adContainer.querySelector('#link');
                 const timer = adContainer.querySelector('#timer');
                 const overlay = document.getElementById('overlay');
                 const date  = new Date();
@@ -104,19 +106,20 @@
                 const hour = date.getHours();
                 const minute = date.getMinutes();
                 const seconds = date.getSeconds();
-                //8am-4pm is ad period
+                //8am-8pm is ad period
                 const minTime = 8;
-                const maxTime = 16;
+                const maxTime = 20;
                 //Random probability (25 for now of getting ad)
                 const randomNum = Math.floor(Math.random() * 4) + 1;
                 //Ad images
-                const images = [["Ads/tutors.png", "Cramming for finals? Join Trusted Tutors! A place where stress turns to success!"]];
+                const images = [["Ads/tutors.png", "Cramming for finals? Join Trusted Tutors! A place where stress turns to success!", "Join here: <a href='https://discord.gg/C265YNBp' target='_blank'>https://discord.gg/C265YNBp</a>"]];
                 const randomAd = Math.floor(Math.random() * images.length);
                 //Only shows ads during finals months
             if(month >= 4 && month <= 6) {
                 if(hour >= minTime && hour <= maxTime && !(hour === maxTime && minute > 0) && randomNum === 2) {
                     adImage.src = images[randomAd][0];
                     adText.textContent = images[randomAd][1];
+                    adLink.innerHTML = images[randomAd][2]
                     adContainer.style.display = 'block';
                     overlay.style.display = 'block';
                     // Set up the delay timer
