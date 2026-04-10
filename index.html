@@ -2141,23 +2141,6 @@
             </a>
         </div>
         <div class = "footer"><<< © Bored Inc. >>></div>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCHtrseSyeXCxhGx6bLw2FQDumhq5yySII",
-    authDomain: "game-website-25ef6.firebaseapp.com",
-    projectId: "game-website-25ef6",
-    storageBucket: "game-website-25ef6.firebasestorage.app",
-    messagingSenderId: "136588824537",
-    appId: "1:136588824537:web:3d1a3b6bdeadb9c5d393c8",
-    measurementId: "G-QJZRNSHTHN"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
         <script>
             function openNav() {
                 document.getElementById("mySidenav").style.width = "250px";
@@ -2245,6 +2228,25 @@
                 }
             });
         </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCHtrseSyeXCxhGx6bLw2FQDumhq5yySII",
+    authDomain: "game-website-25ef6.firebaseapp.com",
+    projectId: "game-website-25ef6",
+    storageBucket: "game-website-25ef6.firebasestorage.app",
+    messagingSenderId: "136588824537",
+    appId: "1:136588824537:web:3d1a3b6bdeadb9c5d393c8",
+    measurementId: "G-QJZRNSHTHN"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  console.log("Firebase initialized");
+</script>
     </body>
 </html>
 
