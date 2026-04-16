@@ -1,36 +1,142 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Bob and Joe (and McGillicutty)">
+    <meta name="description" content="This page will contain all games that are unblocked">
+    <title>Online Graphing Calculator</title>
+    <link rel="icon" href="img/calculator.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" type="text/css"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
+    <style>
+        /* Styles for the help icon */
+        .help-icon {
+            color: red;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 10px;
+            display: inline-block;
+            border: 1px solid red;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            vertical-align: middle;
+        }
+        
+        .help-icon:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="ubuntu-mono-regular">
 
-<html lang = "en">
-    <head>
-        <meta charset = "UTF-8">
-        <meta name = "author" content = "Bob and Joe (and McGillicutty)">
-        <meta name = "description" content = "This page will contain all games that are unblocked">
-        <title>Online Graphing Calculator</title>
-        <link rel = "icon" href = "img/calculator.png"  type = "image/x-icon">
-        <link rel = "stylesheet" href = "style.css"  type = "text/css"> 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap">
-    </head>
-    <body class="ubuntu-mono-regular">
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#" class="category-tab" data-category="all">All</a>
+        <a href="#" class="category-tab" data-category="multi">Multiplayer</a>
+        <a href="#" class="category-tab" data-category="logic">Logic</a>
+        <a href="#" class="category-tab" data-category="plat">Platformer</a>
+        <a href="#" class="category-tab" data-category="papa">Papa Games</a>
+        <a href="#" class="category-tab" data-category="pixel">Pixel Games</a>
+        <a href="#" class="category-tab" data-category="mario">Mario</a>
+        <a href="#" class="category-tab" data-category="drive">Driving</a>
+        <a href="#" class="category-tab" data-category="3d">3D</a>
+        <a href="#" class="category-tab" data-category="point">Point-and-Click</a>
+        <a href="#" class="category-tab" data-category="other">Other</a>
+    </div>
+
+    <div class = "nav-button" onclick="openNav()">☰ </div>
+    <div class="header-container">
+        <h1 style="font-size: 50px;">Bored 
+            <span class="help-icon" onclick="showGameAlert()" title="Click for help">!</span>
+        </h1>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search for games...">
         </div>
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            <a href="#" class="category-tab" data-category="multi">Multiplayer</a>
-            <a href="#" class="category-tab" data-category="logic">Logic</a>
-            <a href="#" class="category-tab" data-category="plat">Platformer</a>
-            <a href="#" class="category-tab" data-category="papa">Papa Games</a>
-            <a href="#" class="category-tab" data-category="pixel">Pixel Games</a>
-            <a href="#" class="category-tab" data-category="mario">Mario</a>
-            <a href="#" class="category-tab" data-category="drive">Driving</a>
-            <a href="#" class="category-tab" data-category="3d">3D</a>
-            <a href="#" class="category-tab" data-category="point">Point-and-Click</a>
-            <a href="#" class="category-tab" data-category="other">Other</a>
-        </div>
-        <span onclick="openNav()" id="openMenuBtn">Open Menu</span>
-        <h1>Bored</h1>
-       
-        <p>Have nothing to do? Here are some (292 with Learn to Fly Idle) games.</p>
+        <p>Have nothing to do? Here are some (316 with 8Ball) games.</p>
+    </div>
+    <div class = "ad">
+        <h1>Advertisement</h1>
+        <button onclick="hideAd()">X</button>
+        <img src="" alt="Ad">
+        <p id = "description"></p>
+        <p id = "link"></p>
+        <p id = "timer"></p>
+    </div>
+    <div id = "overlay"></div>
+    <script>
+        function showGameAlert() {
+            alert("If certain games do not work, switch your url: Calculatorsnet.github.io/Calculator -> Calculatorsnet.github.io/Game or vice versa. (Calculatorsnet.github.io/Calculator will appear as about:blank)");
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        let time = 0;
+        let delay;
+        //seconds to delay ad popup (3-5 seconds for now)
+        let stallingTime = Math.floor(Math.random() * 3) + 3;
+        function popupDelay() {
+            time++;
+            if(time <= stallingTime){
+            document.getElementById('timer').textContent = 'Time remaining: ' + (stallingTime - time) + ' seconds';
+            }   else {
+                    clearInterval(delay);
+            }
+        }
+         document.addEventListener('DOMContentLoaded', function() {
+                const adContainer = document.querySelector('.ad');
+                const adImage = adContainer.querySelector('img');
+                const adText = adContainer.querySelector('#description');
+                const adLink = adContainer.querySelector('#link');
+                const timer = adContainer.querySelector('#timer');
+                const overlay = document.getElementById('overlay');
+                const date  = new Date();
+                //getMonth() returns 0-11
+                const month = date.getMonth() + 1;
+                const hour = date.getHours();
+                const minute = date.getMinutes();
+                const seconds = date.getSeconds();
+                //8am-8pm is ad period
+                const minTime = 8;
+                const maxTime = 20;
+                //Random probability (25 for now of getting ad)
+                const randomNum = Math.floor(Math.random() * 4) + 1;
+                //Ad images
+                const images = [["Ads/tutors.png", "Cramming for finals? Join Trusted Tutors! A place where stress turns to success!", "Join here: <a href='https://discord.gg/C265YNBp' target='_blank'>https://discord.gg/C265YNBp</a>"]];
+                const randomAd = Math.floor(Math.random() * images.length);
+                //Only shows ads during finals months
+            if(month >= 4 && month <= 6) {
+                if(hour >= minTime && hour <= maxTime && !(hour === maxTime && minute > 0) && randomNum === 2) {
+                    adImage.src = images[randomAd][0];
+                    adText.textContent = images[randomAd][1];
+                    adLink.innerHTML = images[randomAd][2]
+                    adContainer.style.display = 'block';
+                    overlay.style.display = 'block';
+                    // Set up the delay timer
+                     delay = setInterval(popupDelay, 1000);
+                } 
+            }
+            });
+
+            function hideAd() {
+                if(time >= stallingTime) {
+                    document.querySelector('.ad').style.display = 'none';
+                    document.getElementById('overlay').style.display = 'none';
+                    clearInterval(delay);
+                }
+            }
+    </script>
+</body>
+</html>
 
         <div class="special-sections-container">
             <div class="featured-game-section" id="game-of-the-day-section">
@@ -75,11 +181,17 @@
             </div>
         </div>
 
-        <div class="icon-library">
+        <div class="icon-library" data-category="all">
             <a href="https://aaravr10.github.io/getawayshootout/" class = "icon" data-category="multi plat pixel">
                 <div class="overlay-container">
                     <img src = "img/getawayshootout.png" alt="Getaway Shootout">
                     <span class="overlay-text">Getaway Shootout</span>
+                </div>
+            </a>
+            <a href="https://aaravr10.github.io/gs/" class = "icon" data-category="multi plat pixel">
+                <div class="overlay-container">
+                    <img src = "img/gs.png" alt="Getaway Shootout (NEW)">
+                    <span class="overlay-text">Getaway Shootout (NEW)</span>
                 </div>
             </a>
             <a href="https://calculatorsnet.github.io/polytrack/" class = "icon" data-category="drive 3d">
@@ -148,7 +260,7 @@
                     <span class="overlay-text">G-Switch 3</span>
                 </div>
             </a>
-            <a href="https://professorlouie.github.io/gamehub/basketrandom/" class = "icon" data-category="multi pixel">
+            <a href="https://pnappl.github.io/Basket-Random/" class = "icon" data-category="multi">
                 <div class="overlay-container">
                     <img src = "img/basketrandom.png" alt="Basket Random">
                     <span class="overlay-text">Basket Random</span>
@@ -244,7 +356,7 @@
                     <span class="overlay-text">Retrobowl</span>
                 </div>
             </a>
-            <a href="https://professorlouie.github.io/gamehub/slope/" class = "icon" data-category="plat drive 3d">
+            <a href="https://goldenn.dev/Slope-Game/" class = "icon" data-category="plat drive 3d">
                 <div class="overlay-container">
                     <img src = "img/slope.png" alt="Slope">
                     <span class="overlay-text">Slope</span>
@@ -1018,7 +1130,7 @@
                     <span class="overlay-text">Adventure Drivers</span>
                 </div>
             </a>
-            <a href="https://gameinclassroom.github.io/big-tower-tiny-square/" class = "icon" data-category="plat pixel logic">
+            <a href="https://cheesypandadev.github.io/big-tower/" class = "icon" data-category="plat pixel logic">
                 <div class="overlay-container">
                     <img src = "img/BigSquare.jpeg" alt="Big Tower Tiny Square">
                     <span class="overlay-text">Big Tower Tiny Square</span>
@@ -1294,10 +1406,16 @@
                     <span class="overlay-text">Christmas Cat</span>
                 </div>
             </a>
-                <a href="https://pnappl.github.io/bonteroom/" class = "icon" data-category="point">
+                <a href="https://pnappl.github.io/bonteroom/" class = "icon" data-category="point logic">
                 <div class="overlay-container">
                     <img src = "img/bonteroom.png" alt="Bonte Room">
                     <span class="overlay-text">Bonte Room</span>
+                </div>
+             </a>
+                <a href="https://pnappl.github.io/bonteroom2/" class = "icon" data-category="point logic">
+                <div class="overlay-container">
+                    <img src = "img/bonteroom2.png" alt="Bonte Room 2">
+                    <span class="overlay-text">Bonte Room 2</span>
                 </div>
             </a>
                  <a href="https://pnappl.github.io/Xenon-Games-New-/sand-bloxels/index.html" class = "icon" data-category="other">
@@ -1545,6 +1663,12 @@
                 <div class="overlay-container">
                     <img src = "img/fnaf4.png" alt="FNAF4">
                     <span class="overlay-text">FNAF4</span>
+                </div>
+            </a>
+            <a href="https://aaravr10.github.io/sisterlocation/clfnafsl.html" class = "icon" data-category="point 3d">
+                <div class="overlay-container">
+                    <img src = "img/sisterlocations.png" alt="FNAFSL">
+                    <span class="overlay-text">FNAFSL</span>
                 </div>
             </a>
             <a href="https://aaravr10.github.io/trafficrider/" class = "icon" data-category="3d drive">
@@ -1848,6 +1972,174 @@
                     <span class="overlay-text">Into The Deep Web</span>
                 </div>
             </a>
+            <a href="https://aaravr10.github.io/recoil/clrecoil.html" class = "icon" data-category="logic plat pixel point">
+                <div class="overlay-container">
+                    <img src = "img/recoil.png" alt="Recoil">
+                    <span class="overlay-text">Recoil</span>
+                </div>
+            </a>
+            <a href="https://aaravr10.github.io/rodha/clrodha.html" class = "icon" data-category="plat">
+                <div class="overlay-container">
+                    <img src = "img/rodha.png" alt="Rodha">
+                    <span class="overlay-text">Rodha</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/6playerpoker/" class = "icon" data-category="point other multi">
+                <div class="overlay-container">
+                    <img src = "img/poker.png" alt="Poker">
+                    <span class="overlay-text">Poker</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/hangman/" class = "icon" data-category="other multi">
+                <div class="overlay-container">
+                    <img src = "img/hangman.png" alt="Hangman">
+                    <span class="overlay-text">Hangman</span>
+                </div>
+            </a>
+            <a href="https://oimo.io/works" class = "icon" data-category="other">
+                <div class="overlay-container">
+                    <img src = "img/oimo.png" alt="oimo">
+                    <span class="overlay-text">oimo</span>
+                </div>
+            </a>
+            <a href="https://pointerpointer.com" class = "icon" data-category="point">
+                <div class="overlay-container">
+                    <img src = "img/pointerpointer.png" alt="Pointer Pointer">
+                    <span class="overlay-text">Pointer Pointer</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/blackjack" class = "icon" data-category="other">
+                <div class="overlay-container">
+                    <img src = "img/blackjack.png" alt="Blackjack">
+                    <span class="overlay-text">Blackjack</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/lotsofgames/play/?id=300" class = "icon" data-category="multi plat drive">
+                <div class="overlay-container">
+                    <img src = "img/mountainbike.png" alt="Mountain Bike">
+                    <span class="overlay-text">Mountain Bike</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/conways-game-of-life/" class = "icon" data-category="other">
+                <div class="overlay-container">
+                    <img src = "img/conway.png" alt="Conway's Game of Life">
+                    <span class="overlay-text">Conway's Game of Life</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/lotsofgames/play/?id=644" class = "icon" data-category="pixel point other">
+                <div class="overlay-container">
+                    <img src = "img/inspace.png" alt="Throw a Potato in Space">
+                    <span class="overlay-text">Throw a Potato in Space</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/lotsofgames/play/?id=755" class = "icon" data-category="plat pixel multi">
+                <div class="overlay-container">
+                    <img src = "img/rbr.png" alt="Run Billy Run">
+                    <span class="overlay-text">Run Billy Run</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/realben10/dm2sc/" class = "icon" data-category="point other">
+                <div class="overlay-container">
+                    <img src = "img/dogeminer.png" alt="Dogeminer 1">
+                    <span class="overlay-text">Doge Miner 1</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/realben10/dm1sc/" class = "icon" data-category="point other">
+                <div class="overlay-container">
+                    <img src = "img/dogeminer2.png" alt="Dogeminer 2">
+                    <span class="overlay-text">Dogeminer 2</span>
+                </div>
+            </a>
+             <a href="https://pnappl.github.io/4D-Chess/" class = "icon" data-category="logic point multi">
+                <div class="overlay-container">
+                    <img src = "img/4dchess.png" alt="4D Chess">
+                    <span class="overlay-text">4D Chess</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/tinycastle/" class = "icon" data-category="plat pixel">
+                <div class="overlay-container">
+                    <img src = "img/tinycastle.png" alt="Tiny Castle">
+                    <span class="overlay-text">Tiny Castle</span>
+                </div>
+            </a>
+            <a href="https://jgmize.github.io/paperclips/index2.html" class = "icon" data-category="point">
+                <div class="overlay-container">
+                    <img src = "img/upc.png" alt="Universal Paper Clips">
+                    <span class="overlay-text">Universal Paper Clips</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/hillClimbRacing/Trump/index.html" class = "icon" data-category="drive plat">
+                <div class="overlay-container">
+                    <img src = "img/hillclimbracing.png" alt="Hill Climb Racing">
+                    <span class="overlay-text">Hill Climb Racing</span>
+                </div>
+            </a>
+            <a href="https://aaravr10.github.io/FNAE-HTML5-1.2.3/" class = "icon" data-category="point 3d">
+                <div class="overlay-container">
+                    <img src = "img/fnae.png" alt="5 Nights at Epstein's">
+                    <span class="overlay-text">5 Nights at Epstein's</span>
+                </div>
+            </a>
+            <a href="https://aaravr10.github.io/vatte" class = "icon" data-category="plat">
+                <div class="overlay-container">
+                    <img src = "img/vatte.png" alt="Void Arena: The True Ending">
+                    <span class="overlay-text">Void Arena: The True Ending</span>
+                </div>
+            </a>
+            <a href="https://aaravr10.github.io/bobingtonroyale/" class = "icon" data-category="multi point">
+                <div class="overlay-container">
+                    <img src = "img/bobingtonroyale.png" alt="Bobington Royale">
+                    <span class="overlay-text">Bobington Royale</span>
+                </div>
+            </a>
+             <a href="https://pnappl.github.io/8Ball-Pool-HTML5/" class = "icon" data-category="multi point logic">
+                <div class="overlay-container">
+                    <img src = "img/eightball.png" alt="8Ball">
+                    <span class="overlay-text">8Ball</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/Mancala/" class = "icon" data-category="multi point logic">
+                <div class="overlay-container">
+                    <img src = "img/mancala.png" alt="Mancala">
+                    <span class="overlay-text">Mancala</span>
+                </div>
+            </a>
+             <a href="https://pnappl.github.io/pong" class = "icon" data-category="multi point pixel">
+                <div class="overlay-container">
+                    <img src = "img/pong.png" alt="Pong">
+                    <span class="overlay-text">Pong</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/galaga---" class = "icon" data-category="pixel">
+                <div class="overlay-container">
+                    <img src = "img/galaga.png" alt="Galaga">
+                    <span class="overlay-text">Galaga</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/chickengrow" class = "icon" data-category="logic point">
+                <div class="overlay-container">
+                    <img src = "img/chickengrow.png" alt="Chicken Grow">
+                    <span class="overlay-text">Chicken Grow</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/dolphinolympics" class = "icon" data-category="other">
+                <div class="overlay-container">
+                    <img src = "img/dolphinolympics.png" alt="Dolphin Olympics">
+                    <span class="overlay-text">Dolphin Olympics</span>
+                </div>
+            </a>
+             <a href="https://pnappl.github.io/dolphinolympics2" class = "icon" data-category="other">
+                <div class="overlay-container">
+                    <img src = "img/dolphinolympics2.png" alt="Dolphin Olympics 2">
+                    <span class="overlay-text">Dolphin Olympics 2</span>
+                </div>
+            </a>
+            <a href="https://pnappl.github.io/simpsonsgame" class = "icon" data-category="point other">
+                <div class="overlay-container">
+                    <img src = "img/kahomer.png" alt="K-A Homer">
+                    <span class="overlay-text">K-A Homer</span>
+                </div>
+            </a>
             <a href="https://aaravr10.github.io/ragdollarchers/" class = "icon" data-category="other">
                 <div class="overlay-container">
                     <img src = "img/ragdollarchers.png" alt="Ragdoll Archers">
@@ -1864,12 +2156,20 @@
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
-        
+           document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                    window.close();
+                }
+           });
+
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
                     const category = this.getAttribute('data-category');
                     document.querySelectorAll('.icon-library .icon').forEach(icon => {
                         const categories = icon.getAttribute('data-category').split(' ');
+                        if(category == "all") {
+                            icon.style.display = 'inline-block';
+                        } else
                         if (categories.includes(category)) {
                             icon.style.display = 'inline-block';
                         } else {
@@ -1898,7 +2198,6 @@
             // New script to populate dynamic sections
             document.addEventListener('DOMContentLoaded', function() {
                 const allGames = document.querySelectorAll('.icon-library .icon');
-                
                 if (allGames.length > 0) {
                     // --- Helper function to get week number ---
                     function getWeekNumber(d) {
@@ -1941,39 +2240,27 @@
                 }
             });
         </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCHtrseSyeXCxhGx6bLw2FQDumhq5yySII",
+    authDomain: "game-website-25ef6.firebaseapp.com",
+    projectId: "game-website-25ef6",
+    storageBucket: "game-website-25ef6.firebasestorage.app",
+    messagingSenderId: "136588824537",
+    appId: "1:136588824537:web:3d1a3b6bdeadb9c5d393c8",
+    measurementId: "G-QJZRNSHTHN"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  console.log("Firebase initialized");
+</script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
