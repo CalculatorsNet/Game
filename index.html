@@ -114,7 +114,7 @@
                 const images = [["Ads/tutors.png", "Cramming for finals? Join Trusted Tutors! A place where stress turns to success!", "Join here: <a href='https://discord.gg/C265YNBp' target='_blank'>https://discord.gg/C265YNBp</a>"]];
                 const randomAd = Math.floor(Math.random() * images.length);
                 //Only shows ads during finals months
-            if(month >= 4 && month <= 6) {
+    /*        if(month >= 4 && month <= 6) {
                 if(hour >= minTime && hour <= maxTime && !(hour === maxTime && minute > 0) && randomNum === 2) {
                     adImage.src = images[randomAd][0];
                     adText.textContent = images[randomAd][1];
@@ -124,7 +124,7 @@
                     // Set up the delay timer
                      delay = setInterval(popupDelay, 1000);
                 } 
-            }
+            } */
             });
 
             function hideAd() {
