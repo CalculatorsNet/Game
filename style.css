@@ -26,7 +26,11 @@ body {
   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
   z-index: 50; 
 }
-
+.random {
+    font-size: 30px;
+    cursor: pointer;
+    color: limegreen;
+}
 .ad {
     background-color: black;
     align-items: center;
