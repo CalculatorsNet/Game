@@ -53,6 +53,7 @@
     <div class="header-container">
         <h1 style="font-size: 50px;">Bored 
             <span class="help-icon" onclick="showGameAlert()" title="Click for help">!</span>
+            <span class="random" onclick="randomGame()" title="Click for a random game"> 🎲 </span>
         </h1>
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search for games...">
@@ -79,6 +80,12 @@
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function randomGame() {
+            const games = document.querySelectorAll('.icon-library a');
+            const randomGame = games[Math.floor(Math.random() * games.length)];
+            randomGame.click();
         }
         let time = 0;
         let delay;
