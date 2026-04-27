@@ -31,9 +31,32 @@
         }
     </style>
 </head>
+<script>
+document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+        e.preventDefault();
+        const games = document.querySelectorAll('.icon-library a');
+        const pick = games[Math.floor(Math.random() * games.length)];
+        showScrollToast(pick.querySelector('.overlay-text').textContent);
+        pick.click();
+    }
+});
+
+function showScrollToast(name) {
+    let t = document.getElementById('scroll-toast');
+    if (!t) {
+        t = document.createElement('div');
+        t.id = 'scroll-toast';
+        document.body.appendChild(t);
+    }
+    t.textContent = '🫠 Now loading: ' + name;
+    t.style.opacity = '1';
+    clearTimeout(t._hide);
+    t._hide = setTimeout(() => t.style.opacity = '0', 2500);
+}
+</script>
 <body class="ubuntu-mono-regular">
 
-    
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="#" class="category-tab" data-category="all">All</a>
