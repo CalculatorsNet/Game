@@ -307,3 +307,13 @@ table, tr, th, td, caption {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+.scroll-highlight img {
+    transform: scale(1.2);
+    border: 3px solid limegreen;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+.scroll-highlight .overlay-text {
+    opacity: 1;
+}
