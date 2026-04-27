@@ -32,15 +32,54 @@
     </style>
 </head>
 <script>
+let scrollIndex = -1;
+let scrollGames = [];
+let scrollTimeout;
+
 document.addEventListener('keydown', function(e) {
-    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+    if (document.activeElement.tagName === 'INPUT') return;
+
+    if (e.key === '/') {
         e.preventDefault();
-        const games = document.querySelectorAll('.icon-library a');
-        const pick = games[Math.floor(Math.random() * games.length)];
+        if (scrollGames.length === 0) {
+            scrollGames = Array.from(document.querySelectorAll('.icon-library a'));
+        }
+        // remove highlight from previous
+        if (scrollIndex >= 0) scrollGames[scrollIndex].classList.remove('scroll-highlight');
+        // pick next random
+        let next;
+        do { next = Math.floor(Math.random() * scrollGames.length); }
+        while (next === scrollIndex && scrollGames.length > 1);
+        scrollIndex = next;
+        const pick = scrollGames[scrollIndex];
+        pick.classList.add('scroll-highlight');
+        pick.scrollIntoView({ behavior: 'smooth', block: 'center' });
         showScrollToast(pick.querySelector('.overlay-text').textContent);
-        pick.click();
+        // auto-clear highlight after 5 seconds of inactivity
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(clearScroll, 5000);
+    }
+
+    if (e.key === 'Enter' && scrollIndex >= 0) {
+        e.preventDefault();
+        scrollGames[scrollIndex].click();
+        clearScroll();
+    }
+
+    if (e.key === 'Escape') {
+        clearScroll();
     }
 });
+
+function clearScroll() {
+    if (scrollIndex >= 0 && scrollGames[scrollIndex]) {
+        scrollGames[scrollIndex].classList.remove('scroll-highlight');
+    }
+    scrollIndex = -1;
+    const t = document.getElementById('scroll-toast');
+    if (t) t.style.opacity = '0';
+    clearTimeout(scrollTimeout);
+}
 
 function showScrollToast(name) {
     let t = document.getElementById('scroll-toast');
@@ -49,11 +88,10 @@ function showScrollToast(name) {
         t.id = 'scroll-toast';
         document.body.appendChild(t);
     }
-    t.textContent = '🫠 Now loading: ' + name;
+    t.textContent = '🎲 ' + name + ' — press Enter to play, / to skip';
     t.style.opacity = '1';
-    clearTimeout(t._hide);
-    t._hide = setTimeout(() => t.style.opacity = '0', 2500);
 }
+</script>
 </script>
 <body class="ubuntu-mono-regular">
 
