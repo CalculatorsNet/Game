@@ -290,8 +290,7 @@ table, tr, th, td, caption {
     color: limegreen;
     top: 20px;
     left: 20px;
-}
-#scroll {
+#scroll-toast {
     position: fixed;
     bottom: 40px;
     left: 50%;
