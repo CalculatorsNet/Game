@@ -3710,11 +3710,6 @@ function showScrollToast(name) {
             function closeNav() {
                 document.getElementById("mySidenav").style.width = "0";
             }
-           document.addEventListener('keydown', function(event) {
-                    if (event.key === 'Enter') {
-                    window.close();
-                }
-           });
 
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
