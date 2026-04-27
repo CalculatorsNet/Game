@@ -291,4 +291,20 @@ table, tr, th, td, caption {
     top: 20px;
     left: 20px;
 }
-
+#scroll {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: limegreen;
+    color: black;
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-family: "Ubuntu Mono", serif;
+    font-size: 16px;
+    font-weight: 400;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
